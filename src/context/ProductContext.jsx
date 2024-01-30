@@ -31,7 +31,7 @@ export function ProductContextProvider(props) {
     }
 
     for (let product in products) {
-      if (products[product].name == productUpdated.name) {
+      if (products[product].name == productUpdated.name && products.length > 1 && products[product].id != productUpdated.id) {
         setRepetid(true);
         return;
       }
