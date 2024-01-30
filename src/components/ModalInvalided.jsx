@@ -22,6 +22,9 @@ export default function ModalInvalided() {
                 ? "El nombre del producto ya existe, inserte otro nombre"
                 : "Tanto el precio como la cantidad no pueden ser numeros menores o iguales a cero"}
             </p>
+            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              {isInvalid && "Y, el nombre no puede ser un valor numerico"}
+            </p>
           </div>
         </Modal.Body>
         <Modal.Footer>

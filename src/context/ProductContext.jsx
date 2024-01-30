@@ -25,7 +25,8 @@ export function ProductContextProvider(props) {
   };
 
   const updateProduct = (productUpdated) => {
-    if (productUpdated.price <= 0 || productUpdated.quantity <= 0) {
+    
+    if (productUpdated.price <= 0 || productUpdated.quantity <= 0 || Number(productUpdated.name)) {
       setIsInvalid(true);
       return;
     }
