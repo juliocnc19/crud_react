@@ -30,7 +30,7 @@ export default function FormInsert() {
             <label className="mb-1 text-gray-600">Nombre del producto</label>
             <input
               defaultValue=""
-              {...register("name", { required: true, maxLength: 30 })}
+              {...register("name", { required: true, maxLength: 30, minLength:3 })}
               className="transition-all duration-200 hover:bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none p-2"
               required
             />

@@ -8,10 +8,11 @@ export function ProductContextProvider(props) {
   const [idSelected, setIdSelected] = useState(null);
   const [repetid, setRepetid] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
+  const [isMinusThree, setIsMinusThree] = useState(false)
 
   const createProduct = (newProduct) => {
     for (let product in products) {
-      if (products[product].name == newProduct.name) {
+      if (products[product].name.trim() === newProduct.name.trim()) {
         setRepetid(true);
         return;
       }
@@ -25,14 +26,18 @@ export function ProductContextProvider(props) {
   };
 
   const updateProduct = (productUpdated) => {
-    
-    if (productUpdated.price <= 0 || productUpdated.quantity <= 0 || Number(productUpdated.name)) {
+    if (Number(productUpdated.price) <= 0 || Number(productUpdated.quantity) <= 0 || Number(productUpdated.name)) {
       setIsInvalid(true);
       return;
     }
 
+    if(productUpdated.name.length < 3){
+      setIsMinusThree(true)
+      return
+    }
+
     for (let product in products) {
-      if (products[product].name == productUpdated.name && products.length > 1 && products[product].id != productUpdated.id) {
+      if (products[product].name.trim() === productUpdated.name.trim() && products.length > 1 && products[product].id != productUpdated.id) {
         setRepetid(true);
         return;
       }
@@ -58,12 +63,12 @@ export function ProductContextProvider(props) {
   };
 
   const changeAModal = () => {
-    if (repetid == false || isInvalid == false) {
-      setRepetid(true);
-      setIsInvalid(true);
-    } else {
-      setRepetid(false);
-      setIsInvalid(false);
+    if (repetid){
+      setRepetid(false)
+    }else if(isInvalid){
+      setIsInvalid(false)
+    }else if(isMinusThree){
+      setIsMinusThree(false)
     }
   };
 
@@ -81,6 +86,7 @@ export function ProductContextProvider(props) {
         repetid,
         isInvalid,
         changeAModal,
+        isMinusThree
       }}
     >
       {props.children}
