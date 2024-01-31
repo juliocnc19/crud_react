@@ -12,7 +12,7 @@ export function ProductContextProvider(props) {
 
   const createProduct = (newProduct) => {
     for (let product in products) {
-      if (products[product].name.trim() === newProduct.name.trim()) {
+      if (products[product].name.trim().toLowerCase() === newProduct.name.trim().toLowerCase()) {
         setRepetid(true);
         return;
       }
@@ -37,7 +37,7 @@ export function ProductContextProvider(props) {
     }
 
     for (let product in products) {
-      if (products[product].name.trim() === productUpdated.name.trim() && products.length > 1 && products[product].id != productUpdated.id) {
+      if (products[product].name.trim().toLowerCase() === productUpdated.name.trim().toLowerCase() && products.length > 1 && products[product].id != productUpdated.id) {
         setRepetid(true);
         return;
       }
