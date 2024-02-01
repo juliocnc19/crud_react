@@ -30,8 +30,8 @@ export default function ListProducts() {
 
   return (
     <>
-      <div className="flex overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+      <div className="flex overflow-x-auto overflow-y-auto h-400 w-800 shadow-md sm:rounded-lg">
+        <table className="table-auto w-full text-sm text-left rtl:text-right text-gray-500">
           <thead className="text-xs text-gray-600 uppercase bg-gray-50 border-b">
             <tr>
               <th scope="col" className="px-6 py-3">
